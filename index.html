@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Tracker</h1>
+        </header>
+
+        <!-- Dynamic Running Expenses Dashboard -->
+        <div class="stats-banner">
+            <div>
+                <h3 style="margin:0; font-size:1rem; opacity:0.9;">Total Cumulative Expenses</h3>
+                <p style="font-size:0.8rem; opacity:0.6; margin-top:2px;">Recalculates automatically upon entry or removal</p>
+            </div>
+            <div id="total-expenses-display" class="stats-val">₦0</div>
+        </div>
+
+        <div class="grid-layout">
+            <!-- Expense Form Input Box -->
+            <main class="card">
+                <h2>Record New Entry</h2>
+                <form id="finance-form">
+                    <div class="input-group">
+                        <label for="amount">Amount (₦)</label>
+                        <input type="number" id="amount" placeholder="e.g. 5000" min="1" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="main-category">Category</label>
+                        <select id="main-category" required>
+                            <option value="" disabled selected>-- Pick a Category --</option>
+                            <option value="Bike">Bike</option>
+                            <option value="Food">Food</option>
+                            <option value="Data">Data</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Junks">Junks</option>
+                            <option value="Airtime">Airtime</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Sub-Category Section (Hidden by Default) -->
+                    <div id="sub-category-group" class="input-group hidden">
+                        <label for="sub-category">Sub-Category Specifics</label>
+                        <select id="sub-category">
+                            <!-- Injected dynamically via JS based on selected main category -->
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="description">Short Note / Description (Optional)</label>
+                        <input type="text" id="description" placeholder="e.g. Fuel for travel, lunch at office">
+                    </div>
+
+                    <!-- Button to trigger execution entry insertion directly into live memory logs -->
+                    <button type="submit" id="add-entry-btn" class="btn-primary">+ Add New Entry to Log</button>
+                </form>
+            </main>
+
+            <!-- Expense Ledger History Archive -->
+            <aside class="card">
+                <div class="history-header">
+                    <h2>Expense Ledger Log</h2>
+                    <button id="clear-all-btn" class="btn-secondary">Clear Ledger</button>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th style="text-align:center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-body">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

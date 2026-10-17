@@ -1,0 +1,17 @@
+{
+  "name": "Personal Finance Tracker",
+  "short_name": "NairaTracker",
+  "description": "Track custom daily expenses with sub-categories and persistent whole number ledger logs.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f0f4f8",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "https://flaticon.com",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
